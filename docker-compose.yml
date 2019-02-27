@@ -1,0 +1,80 @@
+web:
+  build: .
+  ports:
+    - "7700:80"
+  links:
+    - db1
+    - db2
+    - db3
+    - db4
+    - db5
+    - mariadb
+  volumes:
+    - .:/code
+  container_name: mysqltest-web
+db1:
+  image: "mysql:5.7"
+  container_name: mysqltest-db1
+  ports: 
+    - 3310:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testdb1:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
+db2:
+  image: "mysql:5.7"
+  container_name: mysqltest-db2
+  ports:
+    - 3311:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testdb2:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
+mariadb:
+  image: "mariadb"
+  container_name: mysqltest-mariadb
+  ports:
+    - 3312:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testmariadb:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
+db3:
+  image: "mysql:5.7"
+  container_name: mysqltest-db3
+  ports:
+    - 3314:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testdb3:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
+db4:
+  image: "mysql:5.7"
+  container_name: mysqltest-db4
+  ports:
+    - 3315:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testdb4:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
+db5:
+  image: "mysql:5.7"
+  container_name: mysqltest-db5
+  ports:
+    - 3316:3306
+  volumes:
+    - ./mysql:/etc/mysql/conf.d
+    - testdb5:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: Test000000
+    MYSQL_DATABASE: test
